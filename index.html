@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="sass/main.css">
 </head>
 
 <body>
@@ -20,15 +20,21 @@
     </header>
 
     <main id="app">
+        <!-- lightbox goes here -->
+        <lightbox @closelb="this.showLightBox = false" v-if="showLightBox" :hero="lightboxData"></lightbox>
+        <!-- lightbox ends here -->
+
         <nav id="character-nav">
             <ul class="characters">
                 <!-- prof thumb component goes here -->
-                <li>
-                    <!-- <img class="sprite" src="" alt="hero image"> -->
+                <!-- pass the data object into each new component using the :hero props binding -->
+                <herothumbnail @loadlb="loadLightbox" v-for="hero in heroData" :hero="hero"></herothumbnail>
+                <!-- <li>
+                    <img class="sprite" src="" alt="hero image">
                     <div class="sprite"></div>
                     <div class="red-bumper"></div>
                     <h5>name</h5>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
