@@ -7,11 +7,18 @@ export default {
 
     template:
     `
-    <li>
-        <!-- <img class="sprite" src="" alt="hero image"> -->
-        <div class="sprite"></div>
+    <li @click="loadLightboxData">
+        <img :src='"images/" + hero.biopic' alt="hero image" width="150">
+        <!-- <div class="sprite"></div> -->
         <div class="red-bumper"></div>
-        <h5>name</h5>
+        <h5>{{ hero.name }}</h5>
     </li>
     `,
+
+    methods: {
+        loadLightboxData() {
+            // this is a specialized view method
+            this.$emit('loadlb', this.hero);
+        }
+    }
 }
